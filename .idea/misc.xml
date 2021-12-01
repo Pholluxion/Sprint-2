@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Pholluxion/Desktop/Sprint2/app/src/main/res/drawable/style_button.xml" value="0.22870370370370371" />
+        <entry key="..\:/Users/Pholluxion/Desktop/Sprint2/app/src/main/res/drawable/style_input.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/Pholluxion/Desktop/Sprint2/app/src/main/res/layout/activity_hello.xml" value="0.22" />
-        <entry key="..\:/Users/Pholluxion/Desktop/Sprint2/app/src/main/res/layout/activity_login.xml" value="0.19701086956521738" />
+        <entry key="..\:/Users/Pholluxion/Desktop/Sprint2/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/Pholluxion/Desktop/Sprint2/app/src/main/res/layout/activity_main.xml" value="0.22" />
       </map>
     </option>
