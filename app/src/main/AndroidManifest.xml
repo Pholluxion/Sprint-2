@@ -10,13 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sprint2">
         <activity
-            android:name=".LoginActivity"
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
+            android:name=".HomeActivity"
             android:exported="false" />
         <activity
+            android:name=".RegisterActivity"
+            android:exported="false"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+        <activity
             android:name=".HelloActivity"
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

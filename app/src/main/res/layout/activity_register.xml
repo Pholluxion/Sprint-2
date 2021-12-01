@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".RegisterActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -25,9 +25,9 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                app:srcCompat="@drawable/mobile_login" />
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                app:srcCompat="@drawable/account" />
 
             <TextView
                 android:id="@+id/txtLogin"
@@ -36,12 +36,12 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/autour_one"
                 android:gravity="center"
-                android:text="Login"
+                android:text="Registro"
                 android:textColor="@color/purple_700"
                 android:textSize="40sp" />
 
             <EditText
-                android:id="@+id/editTextTextEmailAddressLogin"
+                android:id="@+id/editTextTextEmailAddressRegister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
@@ -56,11 +56,11 @@
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <EditText
-                android:id="@+id/editTextTextPasswordLogin"
+                android:id="@+id/editTextTextPasswordRegister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="40dp"
                 android:background="@drawable/style_input"
                 android:ems="10"
@@ -70,25 +70,35 @@
                 android:minHeight="48dp"
                 tools:ignore="SpeakableTextPresentCheck" />
 
+            <EditText
+                android:id="@+id/editTextTextPasswordRegisterConfirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="40dp"
+                android:background="@drawable/style_input"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="Confirmar Contraseña"
+                android:inputType="textPassword"
+                android:minHeight="48dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
             <Button
-                android:id="@+id/buttonLogin"
+                android:id="@+id/buttonRegister"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="70dp"
                 android:background="@drawable/style_button"
-                android:text="Iniar Sesión"
+                android:text="Registrarse"
                 android:textAllCaps="false" />
 
-            <TextView
-                android:id="@+id/goToReg"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:clickable="true"
-                android:gravity="center"
-                android:minHeight="48dp"
-                android:text="¿No tienes Cuenta? Registrate aquí"
-                android:textColor="@color/purple_700" />
         </LinearLayout>
     </ScrollView>
+
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
