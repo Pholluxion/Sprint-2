@@ -8,41 +8,18 @@
     android:orientation="vertical"
     tools:context=".HelloActivity">
 
-    <ScrollView
+    <ImageView
+        android:id="@+id/imageHello"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:clickable="true"
+        android:src="@drawable/moment_to_remember"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/autour_one"
-                android:gravity="center"
-                android:text="Hello World"
-                android:textColor="@color/purple_700"
-                android:textSize="40sp" />
-
-            <ImageView
-                android:id="@+id/imageHello"
-                android:layout_width="match_parent"
-                android:layout_height="500dp"
-                android:layout_weight="1"
-                android:clickable="true"
-                android:src="@drawable/moment_to_remember"
-                tools:ignore="SpeakableTextPresentCheck" />
-        </LinearLayout>
-    </ScrollView>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
