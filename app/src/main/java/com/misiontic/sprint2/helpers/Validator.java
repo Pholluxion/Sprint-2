@@ -17,6 +17,18 @@ public class Validator {
 
     }
 
+    public boolean confirmInputsLogin(String email, String pass){
+
+        if(email.isEmpty() || pass.isEmpty()){
+
+            return false;
+
+        }else {
+            return true;
+        }
+
+    }
+
     public boolean confirmInputsRegisterPass(String pass_1, String pass_2){
 
         if(pass_1.equals(pass_2)){

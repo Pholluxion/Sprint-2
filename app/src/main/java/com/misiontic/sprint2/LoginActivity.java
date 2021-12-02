@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.misiontic.sprint2.db.DataBaseUser;
+import com.misiontic.sprint2.helpers.Validator;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -37,36 +38,44 @@ public class LoginActivity extends AppCompatActivity {
                 String emailStr  = txtEmail.getText().toString();
                 String passSrt   = txtPass.getText().toString();
 
+                Validator validator = new Validator();
 
-                if(dataBaseUser.isUserRegister(emailStr)){
-                    if(dataBaseUser.isPassOk(emailStr,passSrt)){
+                if(validator.confirmInputsLogin(emailStr,passSrt)){
 
-                        Toast.makeText(getApplicationContext(), "Bienvenido", Toast.LENGTH_SHORT).show();
+                    if(dataBaseUser.isUserRegister(emailStr)){
+                        if(dataBaseUser.isPassOk(emailStr,passSrt)){
 
-                        Intent goToHome = new Intent(getApplicationContext(),HomeActivity.class);
-                        startActivity(goToHome);
-                        finish();
+                            Toast.makeText(getApplicationContext(), "Bienvenido", Toast.LENGTH_SHORT).show();
 
-                    }else {
+                            Intent goToHome = new Intent(getApplicationContext(),HomeActivity.class);
+                            startActivity(goToHome);
+                            finish();
 
-                        Toast.makeText(getApplicationContext(), "Contraseña incorrecta", Toast.LENGTH_SHORT).show();
+                        }else {
+
+                            Toast.makeText(getApplicationContext(), "Contraseña incorrecta", Toast.LENGTH_SHORT).show();
 /*
                         new AlertDialog.Builder(getApplicationContext())
                                 .setPositiveButton(android.R.string.ok,null)
                                 .setMessage("La contraseña es incorrecta, por favor verificala")
                                 .setTitle("Contraseña incorrecta")
                                 .setIcon(R.drawable.ic_baseline_error).show();*/
-                    }
+                        }
 
-                }else{
+                    }else{
 
-                    Toast.makeText(getApplicationContext(), "Usuario no registrado", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Usuario no registrado", Toast.LENGTH_SHORT).show();
                /*     new AlertDialog.Builder(getApplicationContext())
                             .setPositiveButton(android.R.string.ok,null)
                             .setMessage("Usuario no registrado, el usuario no se ha encontrado en la base de datos")
                             .setTitle("Usuario no registrado")
                             .setIcon(R.drawable.ic_baseline_error).show();*/
+                    }
+
+                }else{
+                    Toast.makeText(getApplicationContext(), "Debe completar todos los campos", Toast.LENGTH_SHORT).show();
                 }
+
 
 
             }

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/pagina_1"
+        android:title="Pagina 1">
+    </item>
+
+    <item
+        android:id="@+id/pagina_2"
+        android:title="Pagina 2">
+
+    </item>
+
+    <item
+        android:id="@+id/cerrar_sesion"
+        android:title="Cerrar Sesión">
+
+    </item>
+
+</menu>
