@@ -9,7 +9,11 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.misiontic.sprint2.db.DataBaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -18,14 +22,53 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        DataBaseUser dataBaseUser = new DataBaseUser(this);
+
         TextView goToRegister = findViewById(R.id.goToReg);
         Button btnLogin = findViewById(R.id.buttonLogin);
+        EditText txtEmail = findViewById(R.id.editTextTextEmailAddressLogin);
+        EditText txtPass = findViewById(R.id.editTextTextPasswordLogin);
+
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent goToHome = new Intent(getApplicationContext(),HomeActivity.class);
-                startActivity(goToHome);
-                finish();
+
+                String emailStr  = txtEmail.getText().toString();
+                String passSrt   = txtPass.getText().toString();
+
+
+                if(dataBaseUser.isUserRegister(emailStr)){
+                    if(dataBaseUser.isPassOk(emailStr,passSrt)){
+
+                        Toast.makeText(getApplicationContext(), "Bienvenido", Toast.LENGTH_SHORT).show();
+
+                        Intent goToHome = new Intent(getApplicationContext(),HomeActivity.class);
+                        startActivity(goToHome);
+                        finish();
+
+                    }else {
+
+                        Toast.makeText(getApplicationContext(), "Contraseña incorrecta", Toast.LENGTH_SHORT).show();
+/*
+                        new AlertDialog.Builder(getApplicationContext())
+                                .setPositiveButton(android.R.string.ok,null)
+                                .setMessage("La contraseña es incorrecta, por favor verificala")
+                                .setTitle("Contraseña incorrecta")
+                                .setIcon(R.drawable.ic_baseline_error).show();*/
+                    }
+
+                }else{
+
+                    Toast.makeText(getApplicationContext(), "Usuario no registrado", Toast.LENGTH_SHORT).show();
+               /*     new AlertDialog.Builder(getApplicationContext())
+                            .setPositiveButton(android.R.string.ok,null)
+                            .setMessage("Usuario no registrado, el usuario no se ha encontrado en la base de datos")
+                            .setTitle("Usuario no registrado")
+                            .setIcon(R.drawable.ic_baseline_error).show();*/
+                }
+
+
             }
         });
         goToRegister.setOnClickListener(new View.OnClickListener() {
