@@ -39,7 +39,6 @@ public class RegisterActivity extends AppCompatActivity {
                 String pass_1Srt = pass_1.getText().toString();
                 String pass_2Srt = pass_2.getText().toString();
 
-
                 if (validator.confirmInputsRegister(emailStr,pass_1Srt,pass_2Srt)){
 
                         if(validator.confirmInputsRegisterPass(pass_1Srt,pass_2Srt)){
