@@ -61,18 +61,7 @@ public class LoginActivity extends AppCompatActivity {
                                 .setTitle("Contraseña incorrecta")
                                 .setIcon(R.drawable.ic_baseline_error).show();*/
 
-                            new AlertDialog.Builder(getApplicationContext())
-                                    .setIcon(R.drawable.ic_baseline_error)
-                                    .setTitle("¿Desea cerrar la aplicación?")
-                                    .setCancelable(false)
-                                    .setNegativeButton(android.R.string.cancel, null)
-                                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {// un listener que al pulsar, cierre la aplicacion
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            android.os.Process.killProcess(android.os.Process.myPid()); //Su funcion es algo similar a lo que se llama cuando se presiona el botón "Forzar Detención" o "Administrar aplicaciones", lo cuál mata la aplicación
-                                            //finish(); Si solo quiere mandar la aplicación a segundo plano
-                                        }
-                                    }).show();
+
                         }
 
                     }else{
