@@ -2,6 +2,7 @@ package com.misiontic.sprint2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -47,6 +48,10 @@ public class RegisterActivity extends AppCompatActivity {
                             if(dataBaseUser.insertUser(emailStr,pass_1Srt)){
 
                                 Toast.makeText(getApplicationContext(), "Usuario registrado correctamente", Toast.LENGTH_SHORT).show();
+                                Intent goToLogin = new Intent(getApplicationContext(),LoginActivity.class);
+                                startActivity(goToLogin);
+                                finish();
+
 
                             }else {
 
