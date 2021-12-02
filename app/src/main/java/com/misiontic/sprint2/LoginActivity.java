@@ -53,25 +53,15 @@ public class LoginActivity extends AppCompatActivity {
 
                         }else {
 
-                            Toast.makeText(getApplicationContext(), "Contraseña incorrecta", Toast.LENGTH_SHORT).show();
-/*
-                        new AlertDialog.Builder(getApplicationContext())
-                                .setPositiveButton(android.R.string.ok,null)
-                                .setMessage("La contraseña es incorrecta, por favor verificala")
-                                .setTitle("Contraseña incorrecta")
-                                .setIcon(R.drawable.ic_baseline_error).show();*/
-
+                           // Toast.makeText(getApplicationContext(), "Contraseña incorrecta", Toast.LENGTH_SHORT).show();
+                            setMessage("Contraseña incorrecta");
 
                         }
 
                     }else{
 
-                        Toast.makeText(getApplicationContext(), "Usuario no registrado", Toast.LENGTH_SHORT).show();
-               /*     new AlertDialog.Builder(getApplicationContext())
-                            .setPositiveButton(android.R.string.ok,null)
-                            .setMessage("Usuario no registrado, el usuario no se ha encontrado en la base de datos")
-                            .setTitle("Usuario no registrado")
-                            .setIcon(R.drawable.ic_baseline_error).show();*/
+                        //Toast.makeText(getApplicationContext(), "Usuario no registrado", Toast.LENGTH_SHORT).show();
+                        setMessage("Usuario no registrado");
                     }
 
                 }else{
@@ -87,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent goToReg = new Intent(getApplicationContext(),RegisterActivity.class);
                 startActivity(goToReg);
-                finish();
+
             }
         });
 
@@ -122,5 +112,14 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
+    }
+
+    private void setMessage(String message){
+
+        new AlertDialog.Builder(this)
+                .setIcon(R.drawable.ic_baseline_error)
+                .setTitle(message)
+                .setCancelable(false)
+                .setPositiveButton(android.R.string.ok, null).show();
     }
 }
