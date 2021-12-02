@@ -1,1 +1,1 @@
-# Sprint-2 by Pholluxion
+# Sprints by Pholluxion
