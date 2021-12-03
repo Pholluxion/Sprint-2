@@ -33,7 +33,7 @@ public class MapsFragment extends Fragment {
 
             //googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
 
-            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,10));
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,7));
             googleMap.addMarker(new MarkerOptions().position(latLng).title("Marker"));
         }
     };

@@ -12,8 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sprint2">
         <activity
-            android:name=".MapActivity"
+            android:name=".AddProductActivity"
+            android:label="Agregar nuevo producto"
             android:exported="false" />
+        <activity
+            android:name=".MapActivity"
+            android:exported="false"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

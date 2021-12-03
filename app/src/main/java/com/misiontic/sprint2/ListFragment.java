@@ -1,5 +1,6 @@
 package com.misiontic.sprint2;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.misiontic.sprint2.models.Producto;
 
 import java.util.ArrayList;
@@ -21,6 +23,7 @@ public class ListFragment extends Fragment {
 
 
     ArrayList<Producto> productos;
+    FloatingActionButton floatingActionButton;
 
     public ListFragment() {
 
@@ -30,6 +33,7 @@ public class ListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
         productos = new ArrayList<>();
 
@@ -66,6 +70,16 @@ public class ListFragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.myRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         recyclerView.setAdapter(new MyAdapter(this.getContext(),productos));
+
+        floatingActionButton = view.findViewById(R.id.addProduct);
+
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goToAdd= new Intent(getContext(),AddProductActivity.class);
+                startActivity(goToAdd);
+            }
+        });
 
 
         return view;
