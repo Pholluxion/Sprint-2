@@ -40,7 +40,14 @@ public class LoginActivity extends AppCompatActivity {
 
                 Validator validator = new Validator();
 
-                if(validator.confirmInputsLogin(emailStr,passSrt)){
+                Toast.makeText(getApplicationContext(), "Bienvenido", Toast.LENGTH_SHORT).show();
+
+                Intent goToHome = new Intent(getApplicationContext(),HomeActivity.class);
+                startActivity(goToHome);
+                finish();
+
+
+              /*  if(validator.confirmInputsLogin(emailStr,passSrt)){
 
                     if(dataBaseUser.isUserRegister(emailStr)){
                         if(dataBaseUser.isPassOk(emailStr,passSrt)){
@@ -66,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 }else{
                     Toast.makeText(getApplicationContext(), "Debe completar todos los campos", Toast.LENGTH_SHORT).show();
-                }
+                }*/
 
 
 
