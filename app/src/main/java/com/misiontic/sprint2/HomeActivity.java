@@ -16,6 +16,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class HomeActivity extends AppCompatActivity {
 
     @Override
@@ -52,6 +54,8 @@ public class HomeActivity extends AppCompatActivity {
 
         }else if(item.getItemId() == R.id.cerrar_sesion){
 
+            cerrarSesion();
+
             Toast.makeText(getApplicationContext(), "Hasta luego", Toast.LENGTH_SHORT).show();
 
             Intent goToLog = new Intent(getApplicationContext(),LoginActivity.class);
@@ -85,6 +89,9 @@ public class HomeActivity extends AppCompatActivity {
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {// un listener que al pulsar, cierre la aplicacion
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+
+                        cerrarSesion();
+
                         Intent goToLog = new Intent(getApplicationContext(),LoginActivity.class);
                         startActivity(goToLog);
                         finish();
@@ -107,6 +114,10 @@ public class HomeActivity extends AppCompatActivity {
 
         fragmentTransaction.commit();
 
+    }
+
+    private void cerrarSesion(){
+        FirebaseAuth.getInstance().signOut();
     }
 
 }

@@ -1,5 +1,6 @@
 package com.misiontic.sprint2;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,13 +14,24 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.misiontic.sprint2.db.DataBaseUser;
 import com.misiontic.sprint2.helpers.Validator;
 
 public class LoginActivity extends AppCompatActivity {
 
+
+    private FirebaseAuth firebaseAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        this.firebaseAuth = FirebaseAuth.getInstance();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -40,16 +52,15 @@ public class LoginActivity extends AppCompatActivity {
 
                 Validator validator = new Validator();
 
-                Toast.makeText(getApplicationContext(), "Bienvenido", Toast.LENGTH_SHORT).show();
 
-                Intent goToHome = new Intent(getApplicationContext(),HomeActivity.class);
-                startActivity(goToHome);
-                finish();
+             if(validator.confirmInputsLogin(emailStr,passSrt)){
 
 
-              /*  if(validator.confirmInputsLogin(emailStr,passSrt)){
+                 inicioSesion(emailStr,passSrt);
 
-                    if(dataBaseUser.isUserRegister(emailStr)){
+                 //Inicio de sesión LOCAL
+
+                    /*if(dataBaseUser.isUserRegister(emailStr)){
                         if(dataBaseUser.isPassOk(emailStr,passSrt)){
 
                             Toast.makeText(getApplicationContext(), "Bienvenido", Toast.LENGTH_SHORT).show();
@@ -69,11 +80,14 @@ public class LoginActivity extends AppCompatActivity {
 
                         //Toast.makeText(getApplicationContext(), "Usuario no registrado", Toast.LENGTH_SHORT).show();
                         setMessage("Usuario no registrado");
-                    }
+                    }*/
+
+
+
 
                 }else{
                     Toast.makeText(getApplicationContext(), "Debe completar todos los campos", Toast.LENGTH_SHORT).show();
-                }*/
+                }
 
 
 
@@ -90,6 +104,24 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+
+        if(user != null ){
+
+            Toast.makeText(getApplicationContext(), user.getEmail(), Toast.LENGTH_SHORT).show();
+
+            Intent goToHome = new Intent(getApplicationContext(),HomeActivity.class);
+            startActivity(goToHome);
+            finish();
+
+        }
+
+
+    }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -129,4 +161,32 @@ public class LoginActivity extends AppCompatActivity {
                 .setCancelable(false)
                 .setPositiveButton(android.R.string.ok, null).show();
     }
+
+
+    private void  inicioSesion(String email, String password){
+
+        this.firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this,new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+
+                if(task.isSuccessful()){
+
+                    Toast.makeText(getApplicationContext(), "Bienvenido", Toast.LENGTH_SHORT).show();
+
+                    Intent goToHome = new Intent(getApplicationContext(),HomeActivity.class);
+                    startActivity(goToHome);
+                    finish();
+
+                }else{
+                    Toast.makeText(getApplicationContext(), "Error al iniciar sesión", Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+        });
+
+
+    }
+
+
 }

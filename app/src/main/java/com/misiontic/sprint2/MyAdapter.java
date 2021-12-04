@@ -49,8 +49,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
                 Toast.makeText(context, productos.get(position).getTitulo(), Toast.LENGTH_SHORT).show();
                 Intent goToMap = new Intent(context,MapActivity.class);
 
-                goToMap.putExtra("ltd",productos.get(position).getLatLng().latitude);
-                goToMap.putExtra("lng",productos.get(position).getLatLng().longitude);
+                goToMap.putExtra("ltd",productos.get(position).getLat());
+                goToMap.putExtra("lng",productos.get(position).getLng());
 
                 context.startActivity(goToMap);
 

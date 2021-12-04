@@ -7,24 +7,34 @@ public class Producto {
     private int image;
     private String titulo;
     private String desc;
-    private LatLng latLng;
+    private Double lat;
+    private Double lng;
 
     public Producto() {
     }
 
-    public Producto(int image, String titulo, String desc, LatLng latLng) {
+    public Producto(int image, String titulo, String desc, Double lat, Double lng) {
         this.image = image;
         this.titulo = titulo;
         this.desc = desc;
-        this.latLng = latLng;
+        this.lat = lat;
+        this.lng = lng;
     }
 
-    public LatLng getLatLng() {
-        return latLng;
+    public Double getLat() {
+        return lat;
     }
 
-    public void setLatLng(LatLng latLng) {
-        this.latLng = latLng;
+    public void setLat(Double lat) {
+        this.lat = lat;
+    }
+
+    public Double getLng() {
+        return lng;
+    }
+
+    public void setLng(Double lng) {
+        this.lng = lng;
     }
 
     public int getImage() {

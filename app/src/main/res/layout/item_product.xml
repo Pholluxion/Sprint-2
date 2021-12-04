@@ -3,13 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="10dp">
+    android:layout_marginStart="15dp"
+    android:layout_marginLeft="15dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginEnd="15dp"
+    android:layout_marginRight="15dp"
+    android:layout_marginBottom="5dp"
+    android:background="@drawable/style_card">
 
     <LinearLayout
         android:id="@+id/productLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="5dp"
         android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -17,6 +22,7 @@
             android:id="@+id/imageProducto"
             android:layout_width="200dp"
             android:layout_height="100dp"
+            android:layout_margin="5dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/add_files" />
 
@@ -24,12 +30,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/style_card_2"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tituloProducto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:gravity="center"
                 android:text="Nombre"
                 android:textColor="@color/purple_700"
@@ -39,6 +47,7 @@
                 android:id="@+id/descProducto"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_margin="5dp"
                 android:gravity="center"
                 android:text="Descripción" />
         </LinearLayout>

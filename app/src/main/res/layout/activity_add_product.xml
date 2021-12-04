@@ -6,4 +6,84 @@
     android:layout_height="match_parent"
     tools:context=".AddProductActivity">
 
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/txtNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/style_card"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="Nombre"
+                    android:inputType="textPersonName"
+                    android:minHeight="48dp" />
+
+                <EditText
+                    android:id="@+id/editTextTextDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="111dp"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/style_card"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="Descripción"
+                    android:inputType="textMultiLine"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <EditText
+                    android:id="@+id/editTextTextLatitud"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/style_card"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="Latitud"
+                    android:inputType="textPersonName"
+                    android:minHeight="48dp"
+                    android:text="0" />
+
+                <EditText
+                    android:id="@+id/editTextTextLongitud"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/style_card"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="Longitud"
+                    android:inputType="textPersonName"
+                    android:minHeight="48dp"
+                    android:text="0" />
+
+                <Button
+                    android:id="@+id/buttonAddP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="50dp"
+                    android:text="Agregar" />
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

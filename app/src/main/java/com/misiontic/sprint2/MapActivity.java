@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 
 import com.google.android.gms.maps.model.LatLng;
 
@@ -42,6 +44,19 @@ public class MapActivity extends AppCompatActivity {
 
         fragmentTransaction.commit();
 
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            Intent goToHome = new Intent(getApplicationContext(),HomeActivity.class);
+            startActivity(goToHome);
+            finish();
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
     }
 
 }

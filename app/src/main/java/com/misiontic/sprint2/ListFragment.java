@@ -14,9 +14,17 @@ import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.misiontic.sprint2.models.Producto;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class ListFragment extends Fragment {
@@ -24,6 +32,7 @@ public class ListFragment extends Fragment {
 
     ArrayList<Producto> productos;
     FloatingActionButton floatingActionButton;
+    private FirebaseAuth firebaseAuth;
 
     public ListFragment() {
 
@@ -35,25 +44,19 @@ public class ListFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
 
+        Producto producto = new Producto();
+
         productos = new ArrayList<>();
 
-        Producto producto = new Producto();
+        getProducts();
 
         producto.setImage(R.drawable.add_files);
         producto.setTitulo("Some product");
         producto.setDesc("Some desc");
-        producto.setLatLng(new LatLng(20,20));
+        producto.setLat(20.0);
+        producto.setLng(20.0);
 
-        productos.add(producto);
-        productos.add(producto);
-        productos.add(producto);
-        productos.add(producto);
-        productos.add(producto);
-        productos.add(producto);
-        productos.add(producto);
-        productos.add(producto);
-        productos.add(producto);
-        productos.add(producto);
+
 
         if(productos.size() == 0){
             Toast.makeText(getContext(), "No hay productos agregados", Toast.LENGTH_SHORT).show();
@@ -67,9 +70,17 @@ public class ListFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = LayoutInflater.from(this.getContext()).inflate(R.layout.fragment_list, container, false);
 
+
+
+
+        System.out.println(productos);
+
+
         RecyclerView recyclerView = view.findViewById(R.id.myRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        recyclerView.setAdapter(new MyAdapter(this.getContext(),productos));
+        MyAdapter myAdapter = new MyAdapter(this.getContext(),productos);
+        recyclerView.setAdapter(myAdapter);
+
 
         floatingActionButton = view.findViewById(R.id.addProduct);
 
@@ -81,7 +92,39 @@ public class ListFragment extends Fragment {
             }
         });
 
-
         return view;
     }
+
+    private void getProducts(){
+
+        this.firebaseAuth = FirebaseAuth.getInstance();
+
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference(Producto.class.getSimpleName()).child(firebaseUser.getUid());
+
+        // Read from the database
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+
+                 productos = (ArrayList<Producto>) dataSnapshot.getValue();
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+
+            }
+        });
+
+    }
+
+
+
 }

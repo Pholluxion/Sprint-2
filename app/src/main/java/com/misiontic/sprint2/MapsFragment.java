@@ -21,7 +21,11 @@ public class MapsFragment extends Fragment {
     private LatLng latLng;
 
     public MapsFragment(LatLng latLng) {
+
         this.latLng = latLng;
+    }
+
+    public MapsFragment() {
     }
 
     private OnMapReadyCallback callback = new OnMapReadyCallback() {

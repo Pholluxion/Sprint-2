@@ -17,6 +17,7 @@
             android:exported="false" />
         <activity
             android:name=".MapActivity"
+            android:parentActivityName=".HomeActivity"
             android:exported="false"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <!--
